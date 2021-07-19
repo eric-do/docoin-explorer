@@ -6,3 +6,8 @@ it('renders app title', () => {
   render(<App />);
   expect(screen.getByText('Docoin Explorer')).toBeInTheDocument();
 });
+
+it('renders Latest Blocks section', () => {
+  render(<App />);
+  expect(screen.getByText('Latest Blocks')).toBeInTheDocument();
+});
