@@ -1,6 +1,5 @@
 import React from 'react'
 import { BlockChain, Transaction } from '../types';
-import { timeDifference } from '../utils';
 
 const headers = [
   'Height',
