@@ -1,12 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
+
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
+        <Link to="/" className="navbar-item">
           <h3 className="title is-3">Docoin Explorer</h3>
-        </a>
+        </Link>
         <button
           className="navbar-burger"
           aria-label="menu"
@@ -17,6 +19,21 @@ const NavBar = () => {
           <span aria-hidden="true"></span>
         </button>
       </div>
+
+    <div id="navbarBasicExample" className="navbar-menu">
+      <div className="navbar-start">
+        <Link to="/wallet" className="navbar-item">
+          Wallet
+        </Link>
+        <Link to="/exchange" className="navbar-item">
+          Exchange
+        </Link>
+        <Link to="/" className="navbar-item">
+          Explorer
+        </Link>
+      </div>
+    </div>
+
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
