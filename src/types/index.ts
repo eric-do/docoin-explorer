@@ -1,4 +1,4 @@
-export interface BlockChain {
+export interface Block {
   index: number;
   merkle_root: string;
   previous_hash: string;
@@ -6,6 +6,10 @@ export interface BlockChain {
   timestamp: number;
   transactions: Transaction[]
 };
+
+export interface BlockChain {
+  chain: Block[]
+}
 
 export interface Transaction {
   amount: number;
