@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import BlockList from './BlockList';
+import Table from './Table';
 import { blockchain } from '../dummy';
 import { timeDifference } from '../utils';
 
@@ -28,15 +28,11 @@ it('renders section and table correctly', () => {
 
   const headers = [ 'Height', 'Age', 'Miner', 'Volume'];
 
-  render(<BlockList
-    title="Test title"
-    description="Test description"
+  render(<Table
     headers={headers}
     data={formattedBlocks}
   />);
-  expect(screen.getByText('Latest Blocks')).toBeInTheDocument();
   expect(screen.getByRole('table')).toBeInTheDocument();
-  expect(screen.getByText('Latest Blocks')).toBeInTheDocument();
   formattedBlocks.forEach(block => {
     block.fields.forEach(field => {
       expect(screen.getByText(field)).toBeInTheDocument()
