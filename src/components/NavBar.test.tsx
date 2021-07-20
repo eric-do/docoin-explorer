@@ -4,5 +4,8 @@ import NavBar from './NavBar';
 
 it('renders app title', () => {
   render(<NavBar />);
-  expect(screen.getByText('Docoin Explorer')).toBeInTheDocument();
+  expect(screen.getByRole(
+    'heading',
+    { name: 'Docoin Explorer' }
+  )).toBeInTheDocument();
 });
