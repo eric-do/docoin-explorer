@@ -1,4 +1,4 @@
-import { BlockChain } from "../types";
+import { BlockChain, Transaction } from "../types";
 
 export const timeDifference = (timestamp: number, locale: string) => {
   const msPerMinute = 60 * 1000;
@@ -53,3 +53,19 @@ export const getBlockTableData = (blockchain: BlockChain)  => (
     })
   )
 );
+
+export const getTransactionTableData = (transactions: Transaction[], exchange: number) => {
+  return transactions.map(tx => {
+    const { hash, timestamp: time, amount } = tx
+
+    return {
+      key: hash,
+      fields: [
+        truncateHash(hash),
+        timeDifference(time * 1000, 'en'),
+        amount,
+        (amount * exchange).toFixed(2)
+      ]
+    }
+  })
+};

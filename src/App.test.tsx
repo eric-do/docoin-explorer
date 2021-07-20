@@ -17,3 +17,11 @@ it('renders Latest Blocks section', () => {
     { name: 'Latest Blocks' }
   )).toBeInTheDocument();
 });
+
+it('renders Latest Transactions section', () => {
+  render(<App />);
+  expect(screen.getByRole(
+    'heading',
+    { name: 'Latest Transactions' }
+  )).toBeInTheDocument();
+});

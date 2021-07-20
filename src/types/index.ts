@@ -18,4 +18,5 @@ export interface Transaction {
   signature: string;
   timestamp: number;
   length: number;
+  hash: string;
 }
