@@ -1,7 +1,6 @@
 import React from 'react'
 import { BlockChain, Transaction } from '../types';
 import { timeDifference } from '../utils';
-import { blockchain } from '../dummy';
 
 const headers = [
   'Height',
@@ -10,12 +9,23 @@ const headers = [
   'Volume'
 ]
 
-const BlockList = () => {
+interface Props {
+  title: string;
+  description: string;
+  headers: string[];
+  data: Data[]
+};
+
+interface Data {
+  key: string | number;
+  fields: (string | number)[];
+};
+
+const BlockList = ({headers = [], data = [] as Data[]}: Props) => {
   return (
     <div className="section">
       <div className="block">
         <h4 className="title is-4">Latest Blocks</h4>
-        <div className="box">
           <div className="table-container">
             <table className="table is-fullwidth">
               <thead>
@@ -23,19 +33,17 @@ const BlockList = () => {
               </thead>
               <tbody>
                 {
-                  blockchain.chain.map(block => (
-                    <tr key={block.merkle_root}>
-                      <td>{block.index}</td>
-                      <td>{timeDifference(block.timestamp * 1000, 'en')}</td>
-                      <td>{block.transactions[0].recipient}</td>
-                      <td>{block.transactions.reduce((sum, tx) => sum + tx.amount, 0)}</td>
-                    </tr>
-                  ))
+                  data.map(row => {
+                    return (
+                      <tr key={row.key}>
+                        { row.fields.map((field, i) => <td key={i}>{field}</td>)}
+                      </tr>
+                    );
+                  })
                 }
               </tbody>
             </table>
           </div>
-        </div>
       </div>
     </div>
   );
