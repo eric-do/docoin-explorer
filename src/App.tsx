@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar'
-import BlockList from './components/BlockList'
+import DashboardSection from './components/DashboardSection';
+import Table from './components/Table'
 import { blockchain } from './dummy';
 import { timeDifference } from './utils';
 
@@ -20,12 +21,15 @@ const App = () => {
   return (
     <div className="App">
       <NavBar />
-      <BlockList
+      <DashboardSection
         title="Latest Blocks"
         description="The most recently mined blocks"
-        headers={[ 'Height', 'Age', 'Miner', 'Volume']}
-        data={blockData}
-      />
+      >
+        <Table
+          headers={[ 'Height', 'Age', 'Miner', 'Volume']}
+          data={blockData}
+        />
+      </DashboardSection>
     </div>
   );
 }
