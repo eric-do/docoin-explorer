@@ -1,8 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Table from './Table';
-import { blockchain } from '../dummy';
-import { timeDifference } from '../utils';
 
 it('renders section and table correctly', () => {
   const blockData = [

@@ -4,19 +4,11 @@ import NavBar from './components/NavBar'
 import DashboardSection from './components/DashboardSection';
 import Table from './components/Table'
 import { blockchain } from './dummy';
-import { timeDifference } from './utils';
+import { getBlockTableData } from './utils';
 
 const App = () => {
 
-  const blockData = blockchain.chain.map(block => ({
-    key: block.merkle_root,
-    fields: [
-      block.index,
-      timeDifference(block.timestamp * 1000, 'en'),
-      block.transactions[0].recipient,
-      block.transactions.reduce((sum, tx) => sum + tx.amount, 0)
-    ]})
-  )
+  const blockData = getBlockTableData(blockchain);
 
   return (
     <div className="App">
