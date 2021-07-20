@@ -17,6 +17,15 @@ const NavBar = () => {
           <span aria-hidden="true"></span>
         </button>
       </div>
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            <button className="button is-primary">
+              <strong>Buy Docoin</strong>
+            </button>
+          </div>
+        </div>
+      </div>
     </nav>
   )
 }
