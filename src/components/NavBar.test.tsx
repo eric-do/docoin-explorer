@@ -9,3 +9,11 @@ it('renders app title', () => {
     { name: 'Docoin Explorer' }
   )).toBeInTheDocument();
 });
+
+it('renders purchase CTA', () => {
+  render(<NavBar />);
+  expect(screen.getByRole(
+    'button',
+    { name: 'Buy Docoin' }
+  )).toBeInTheDocument();
+});
