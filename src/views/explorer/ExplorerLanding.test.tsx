@@ -6,12 +6,12 @@ it('renders section header', () => {
   render(<ExplorerLanding />);
   expect(screen.getByRole(
     'heading',
-    { name: 'Bitcoin' }
+    { name: 'Docoin' }
   )).toBeInTheDocument();
 
   expect(screen.getByRole(
     'heading',
-    { name: `Blockchain information for Bitcoin (BTC) `
+    { name: `Docoin information for Docoin (DCN) `
              + `including historical prices, the most recently `
              + `mined blocks, the mempool size of unconfirmed `
              + `transactions, and data for the latest transactions.` }
