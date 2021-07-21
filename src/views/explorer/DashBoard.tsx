@@ -15,6 +15,7 @@ const Dashboard = () => {
       <DashboardSection
         title="Latest Blocks"
         description="The most recently mined blocks"
+        button={{text: 'View All Blocks', url: '/btc/blocks?page=1'}}
       >
         <Table
           headers={[ 'Height', 'Age', 'Miner', 'Volume']}
@@ -24,6 +25,7 @@ const Dashboard = () => {
       <DashboardSection
         title="Latest Transactions"
         description="The most recently published unconfirmed transactions"
+        button={{text: 'View All Transactions', url: '/btc/unconfirmed-transactions?page=1'}}
       >
         <Table
           headers={['Hash', 'Time', 'Amount (Docoins)', 'Amount (USD)']}
