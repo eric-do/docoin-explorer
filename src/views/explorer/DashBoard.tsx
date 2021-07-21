@@ -10,7 +10,8 @@ const Dashboard = () => {
   const txData = getTransactionTableData(current_transactions, EXCHANGE_RATE);
 
   return (
-    <>
+    <div className="section">
+    <div className="columns is-desktop" >
       <DashboardSection
         title="Latest Blocks"
         description="The most recently mined blocks"
@@ -29,7 +30,8 @@ const Dashboard = () => {
           data={txData}
         />
       </DashboardSection>
-    </>
+    </div>
+    </div>
   )
 }
 
