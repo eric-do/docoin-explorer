@@ -28,7 +28,7 @@ const Dashboard = () => {
         button={{text: 'View All Transactions', url: '/btc/unconfirmed-transactions?page=1'}}
       >
         <Table
-          headers={['Hash', 'Time', 'Amount (Docoins)', 'Amount (USD)']}
+          headers={['Hash', 'Time', 'Amount (DCN)', 'Amount (USD)']}
           data={txData}
         />
       </DashboardSection>
