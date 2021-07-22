@@ -52,6 +52,10 @@ const BuyMenu = () => {
     })
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="is-flex is-justify-content-flex-end section">
       <div className={`dropdown is-right is-up ${displayMenu && 'is-active'}`}>
@@ -78,7 +82,7 @@ const BuyMenu = () => {
               <h4 className="title has-text-left is-4">
                 Buy Docoin
               </h4>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="is-flex is-justify-content-flex-start">
                     <Denomination className="is-size-2">$</Denomination>
                     <NakedInput
