@@ -1,5 +1,6 @@
 import React from 'react'
 import Dashboard from './DashBoard'
+import BuyMenu from '../../components/BuyMenu'
 
 const ExplorerLanding = () => {
 
@@ -15,6 +16,7 @@ const ExplorerLanding = () => {
         </h2>
       </div>
       <Dashboard />
+      <BuyMenu />
     </>
   )
 };
