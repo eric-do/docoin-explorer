@@ -20,7 +20,7 @@ it('renders section with title, description, children, button', () => {
   expect(screen.getByRole('heading', { name: 'Test title' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name:'Test description' })).toBeInTheDocument();
   expect(screen.getByText('Test children')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'test button'})).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'test button'})).toBeInTheDocument();
 });
 
 it('does not render button if one is not passed', () => {
@@ -33,5 +33,5 @@ it('does not render button if one is not passed', () => {
     </DashboardSection>
   );
 
-  expect(screen.queryByRole('button')).not.toBeInTheDocument();
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
 });
