@@ -3,6 +3,7 @@ import Styled, { keyframes } from 'styled-components';
 
 interface ButtonProps {
   hovered: boolean;
+  displayMenu: boolean;
 }
 
 interface FormInputs {
@@ -18,6 +19,7 @@ const fadeIn = keyframes`
 const NakedInput = Styled.input`
   border: 0;
   outline: none;
+  width: 100%;
 `;
 
 const Denomination = Styled.span`
@@ -25,7 +27,7 @@ const Denomination = Styled.span`
 `;
 
 const BuyButton = Styled.button<ButtonProps>`
-  max-width: ${props => props.hovered ? "12rem" : 0};
+  max-width: ${props => props.hovered && !props.displayMenu ? "12rem" : 0};
   -webkit-transition: max-width 0.5s;
   transition: max-width 0.5s;
   display: inline-flex;
@@ -63,6 +65,7 @@ const BuyMenu = () => {
           <BuyButton
             aria-label="Buy Docoin"
             hovered={hover}
+            displayMenu={displayMenu}
             onClick={() => setDisplayMenu(!displayMenu)}
             aria-haspopup="true"
             aria-controls="buy-drop-up"
@@ -72,7 +75,7 @@ const BuyMenu = () => {
           >
               { displayMenu && <span className="icon is-medium"><i className="fas fa-times"></i></span>}
               { hover && !displayMenu && <ButtonText>Buy Docoin</ButtonText> }
-              { !hover && !displayMenu && <span className="icon is-medium"><i className="fas fa-home"></i></span> }
+              { !hover && !displayMenu && <span className="icon is-medium"><i className="fas fa-shopping-cart"></i></span> }
 
           </BuyButton>
         </div>
