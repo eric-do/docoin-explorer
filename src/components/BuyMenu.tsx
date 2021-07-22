@@ -48,10 +48,11 @@ const BuyMenu = () => {
 
   const handleInputs = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
-    setFormInputs({
+    setFormInputs(formInputs => ({
       ...formInputs,
       [name]: value
     })
+    )
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -79,7 +80,12 @@ const BuyMenu = () => {
 
           </BuyButton>
         </div>
-        <DropUpMenu className="dropdown-menu" id="buy-drop-up" role="menu">
+        <DropUpMenu
+          className="dropdown-menu"
+          id="buy-drop-up"
+          role="menu"
+          aria-label="Buy Docoin"
+        >
           <div className="dropdown-content">
             <div className="dropdown-item">
               <h4 className="title has-text-left is-4">
@@ -91,6 +97,7 @@ const BuyMenu = () => {
                     <NakedInput
                       className="is-size-2"
                       name="amount"
+                      aria-label="amount"
                       type="number"
                       min=".01"
                       placeholder="0"
@@ -101,7 +108,7 @@ const BuyMenu = () => {
                     />
                 </div>
                 <div className="field">
-                  <label className="label has-text-left">
+                  <label htmlFor="email-input" className="label has-text-left">
                     Your Email
                   </label>
                   <div className="control">
@@ -109,6 +116,7 @@ const BuyMenu = () => {
                       className="input is-primary"
                       type="email"
                       name="email"
+                      id="email-input"
                       value={formInputs.email}
                       onChange={handleInputs}
                     />
