@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+  const [showMenu, setMenu] = React.useState<boolean>(false);
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
 
@@ -10,6 +12,7 @@ const NavBar = () => {
           <h1 className="title is-3">Docoin Explorer</h1>
         </Link>
         <button
+          onClick={() => setMenu(!showMenu)}
           className="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
@@ -20,26 +23,28 @@ const NavBar = () => {
         </button>
       </div>
 
-    <div id="navbarBasicExample" className="navbar-menu">
-      <div className="navbar-start">
-        <Link to="/wallet" className="navbar-item">
-          Wallet
-        </Link>
-        <Link to="/exchange" className="navbar-item">
-          Exchange
-        </Link>
-        <Link to="/" className="navbar-item">
-          Explorer
-        </Link>
-      </div>
-    </div>
+      <div
+        id="navbarBasicExample"
+        className={`navbar-menu has-text-left ${showMenu && 'is-active'}`}>
+        <div className="navbar-start">
+          <Link to="/wallet" className="navbar-item">
+            Wallet
+          </Link>
+          <Link to="/exchange" className="navbar-item">
+            Exchange
+          </Link>
+          <Link to="/" className="navbar-item">
+            Explorer
+          </Link>
+        </div>
 
-      <div className="navbar-end">
-        <div className="navbar-item">
-          <div className="buttons">
-            <button className="button is-primary">
-              <strong>Buy Docoin</strong>
-            </button>
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="buttons">
+              <button className="button is-primary">
+                <strong>Buy Docoin</strong>
+              </button>
+            </div>
           </div>
         </div>
       </div>

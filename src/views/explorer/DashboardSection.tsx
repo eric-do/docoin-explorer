@@ -16,9 +16,9 @@ const DashboardSection: React.FC<Props> = ({
   button,
   children
 }: Props) => {
-  const callToAction = <button className="button is-primary level-item is-outlined">
+  const callToAction = <a href={button?.url} className="button is-primary level-item is-outlined">
                         <strong>{button?.text}</strong>
-                      </button>
+                      </a>
   return (
     <div className="column" >
       <div className="block">
