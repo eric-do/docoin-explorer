@@ -65,19 +65,24 @@ const BuyMenu = () => {
         <div className="dropdown-trigger">
           <BuyButton
             aria-label="Buy Docoin"
+            aria-haspopup="true"
+            aria-controls="buy-drop-up"
             hovered={hover}
             displayMenu={displayMenu}
             onClick={() => setDisplayMenu(!displayMenu)}
-            aria-haspopup="true"
-            aria-controls="buy-drop-up"
             className="button is-rounded is-primary is-large buy-box"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-              { displayMenu && <span className="icon is-medium"><i className="fas fa-times"></i></span>}
-              { hover && !displayMenu && <ButtonText>Buy Docoin</ButtonText> }
-              { !hover && !displayMenu && <span className="icon is-medium"><i className="fas fa-shopping-cart"></i></span> }
+              { displayMenu && <span className="icon is-medium">
+                                  <i className="fas fa-times" />
+                                </span>}
 
+              { hover && !displayMenu && <ButtonText>Buy Docoin</ButtonText> }
+
+              { !hover && !displayMenu && <span className="icon is-medium">
+                                             <i className="fas fa-shopping-cart" />
+                                             </span> }
           </BuyButton>
         </div>
         <DropUpMenu

@@ -19,7 +19,7 @@ it('should display and hide menu on button click', () => {
   expect(screen.getByRole('button', { name: 'Continue' })).toBeInTheDocument();
 });
 
-it('should take form input in the menu', () => {
+it('should display typed text in input fields', () => {
   render(<BuyMenu />);
   const button = screen.getByRole('button', { name: 'Buy Docoin' });
   userEvent.click(button);
