@@ -25,16 +25,25 @@ it('renders section and table correctly', () => {
   })
 
   const headers = [ 'Height', 'Age', 'Miner', 'Volume'];
-
+  const linkedColumns = {
+    0: '/dcn/block/',
+    2: '/dcn/address/'
+  }
   render(<Table
     headers={headers}
     data={formattedBlocks}
+    linkedColumns={linkedColumns}
   />);
+
   expect(screen.getByRole('table')).toBeInTheDocument();
+
+  headers.forEach(header => expect(screen.getByText(header)).toBeInTheDocument());
+
   formattedBlocks.forEach(block => {
     block.fields.forEach(field => {
       expect(screen.getByText(field)).toBeInTheDocument()
     })
   })
-  headers.forEach(header => expect(screen.getByText(header)).toBeInTheDocument())
+
+  expect(screen.getByRole('link', { name: '1' })).toBeInTheDocument()
 });
