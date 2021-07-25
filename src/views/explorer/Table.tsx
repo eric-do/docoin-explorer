@@ -3,6 +3,9 @@ import React from 'react'
 interface Props {
   headers: string[];
   data: Data[]
+  linkedColumns: {
+    [index: number]: string
+  };
 };
 
 interface Data {
@@ -10,7 +13,7 @@ interface Data {
   fields: (string | number)[];
 };
 
-const Table = ({headers = [], data = [] as Data[]}: Props) => {
+const Table = ({headers = [], data = [], linkedColumns}: Props) => {
   return (
     <div className="table-container">
       <table className="table is-fullwidth">
@@ -19,13 +22,18 @@ const Table = ({headers = [], data = [] as Data[]}: Props) => {
         </thead>
         <tbody>
           {
-            data.map(row => {
-              return (
-                <tr key={row.key}>
-                  { row.fields.map((field, i) => <td key={i}>{field}</td>)}
-                </tr>
-              );
-            })
+            data.map(row => (
+              <tr key={row.key}>
+                {
+                  row.fields.map((field, i) => (
+                    linkedColumns[i]
+                    ? <td key={i} ><a href={`${linkedColumns[i]}${field}`}>{field}</a></td>
+                    : <td key={i}>{field}</td>
+                  ))
+                }
+              </tr>
+              )
+            )
           }
         </tbody>
       </table>
