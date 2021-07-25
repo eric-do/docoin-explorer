@@ -3,6 +3,7 @@ import Styled, { keyframes } from 'styled-components';
 
 interface ButtonProps {
   hovered: boolean;
+  displayMenu: boolean;
 }
 
 interface FormInputs {
@@ -18,6 +19,7 @@ const fadeIn = keyframes`
 const NakedInput = Styled.input`
   border: 0;
   outline: none;
+  width: 100%;
 `;
 
 const Denomination = Styled.span`
@@ -25,7 +27,7 @@ const Denomination = Styled.span`
 `;
 
 const BuyButton = Styled.button<ButtonProps>`
-  max-width: ${props => props.hovered ? "12rem" : 0};
+  max-width: ${props => props.hovered && !props.displayMenu ? "12rem" : 0};
   -webkit-transition: max-width 0.5s;
   transition: max-width 0.5s;
   display: inline-flex;
@@ -46,10 +48,11 @@ const BuyMenu = () => {
 
   const handleInputs = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
-    setFormInputs({
+    setFormInputs(formInputs => ({
       ...formInputs,
       [name]: value
     })
+    )
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -62,21 +65,32 @@ const BuyMenu = () => {
         <div className="dropdown-trigger">
           <BuyButton
             aria-label="Buy Docoin"
-            hovered={hover}
-            onClick={() => setDisplayMenu(!displayMenu)}
             aria-haspopup="true"
             aria-controls="buy-drop-up"
+            hovered={hover}
+            displayMenu={displayMenu}
+            onClick={() => setDisplayMenu(!displayMenu)}
             className="button is-rounded is-primary is-large buy-box"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-              { displayMenu && <span className="icon is-medium"><i className="fas fa-times"></i></span>}
-              { hover && !displayMenu && <ButtonText>Buy Docoin</ButtonText> }
-              { !hover && !displayMenu && <span className="icon is-medium"><i className="fas fa-home"></i></span> }
+              { displayMenu && <span className="icon is-medium">
+                                  <i className="fas fa-times" />
+                                </span>}
 
+              { hover && !displayMenu && <ButtonText>Buy Docoin</ButtonText> }
+
+              { !hover && !displayMenu && <span className="icon is-medium">
+                                             <i className="fas fa-shopping-cart" />
+                                             </span> }
           </BuyButton>
         </div>
-        <DropUpMenu className="dropdown-menu" id="buy-drop-up" role="menu">
+        <DropUpMenu
+          className="dropdown-menu"
+          id="buy-drop-up"
+          role="menu"
+          aria-label="Buy Docoin"
+        >
           <div className="dropdown-content">
             <div className="dropdown-item">
               <h4 className="title has-text-left is-4">
@@ -88,6 +102,7 @@ const BuyMenu = () => {
                     <NakedInput
                       className="is-size-2"
                       name="amount"
+                      aria-label="amount"
                       type="number"
                       min=".01"
                       placeholder="0"
@@ -98,7 +113,7 @@ const BuyMenu = () => {
                     />
                 </div>
                 <div className="field">
-                  <label className="label has-text-left">
+                  <label htmlFor="email-input" className="label has-text-left">
                     Your Email
                   </label>
                   <div className="control">
@@ -106,6 +121,7 @@ const BuyMenu = () => {
                       className="input is-primary"
                       type="email"
                       name="email"
+                      id="email-input"
                       value={formInputs.email}
                       onChange={handleInputs}
                     />
