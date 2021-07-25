@@ -19,7 +19,7 @@ const NavBar = () => {
     <nav className="navbar" role="navigation" aria-label="main navigation">
 
       <div className="navbar-brand">
-        <Link to="/">
+        <Link to="/" aria-label="Homepage link">
           <StyledBrandLink className="navbar-item">
             <h1 className="title is-3">Docoin.com</h1>
           </StyledBrandLink>
@@ -46,12 +46,25 @@ const NavBar = () => {
           <Link to="/exchange" className="navbar-item">
             Exchange
           </Link>
-          <Link to="/" className="navbar-item">
+          <Link to="/explorer" className="navbar-item">
             Explorer
           </Link>
         </div>
 
         <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="control has-icons-left">
+            <span className="icon is-small is-left">
+              <i className="fas fa-search"></i>
+            </span>
+              <input
+                aria-label="Search field"
+                className="input"
+                type="text"
+                placeholder="Search..."
+              />
+            </div>
+          </div>
           <div className="navbar-item">
             <div className="buttons">
               <button className="button is-primary">
