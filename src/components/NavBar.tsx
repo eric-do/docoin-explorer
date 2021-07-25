@@ -1,15 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Styled from 'styled-components';
+
+const NavSection = Styled.div`
+  padding-top: 0;
+  padding-bottom: 0;
+`
+
+const StyledBrandLink = Styled.div`
+  padding-left: 0;
+`;
 
 const NavBar = () => {
   const [showMenu, setMenu] = React.useState<boolean>(false);
 
   return (
+    <NavSection className="section">
     <nav className="navbar" role="navigation" aria-label="main navigation">
 
       <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <h1 className="title is-3">Docoin Explorer</h1>
+        <Link to="/">
+          <StyledBrandLink className="navbar-item">
+            <h1 className="title is-3">Docoin.com</h1>
+          </StyledBrandLink>
         </Link>
         <button
           onClick={() => setMenu(!showMenu)}
@@ -49,6 +62,7 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
+    </NavSection>
   )
 }
 
