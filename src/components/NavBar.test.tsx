@@ -40,3 +40,8 @@ it('renders NavBar links', () => {
     { name: 'Explorer' }
   )).toBeInTheDocument();
 });
+
+it('renders a search input field', () => {
+  render(<NavBarWithRouter />);
+  expect(screen.getByRole('textbox', { name: 'Search field' })).toBeInTheDocument()
+})
