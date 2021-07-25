@@ -13,7 +13,7 @@ it('renders app title', () => {
   render(<NavBarWithRouter />);
   expect(screen.getByRole(
     'heading',
-    { name: 'Docoin Explorer' }
+    { name: 'Docoin.com' }
   )).toBeInTheDocument();
 });
 

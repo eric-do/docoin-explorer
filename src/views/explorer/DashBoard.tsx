@@ -20,6 +20,10 @@ const Dashboard = () => {
         <Table
           headers={[ 'Height', 'Age', 'Miner', 'Volume']}
           data={blockData}
+          linkedColumns={{
+            0: '/dcn/block/',
+            2: '/dcn/address/'
+          }}
         />
       </DashboardSection>
       <DashboardSection
@@ -30,6 +34,9 @@ const Dashboard = () => {
         <Table
           headers={['Hash', 'Time', 'Amount (DCN)', 'Amount (USD)']}
           data={txData}
+          linkedColumns={{
+            0: '/dcn/tx/'
+          }}
         />
       </DashboardSection>
     </div>

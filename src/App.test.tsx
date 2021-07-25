@@ -6,7 +6,7 @@ it('renders app title', () => {
   render(<App />);
   expect(screen.getByRole(
     'heading',
-    { name: 'Docoin Explorer' }
+    { name: 'Docoin.com' }
   )).toBeInTheDocument();
 });
 

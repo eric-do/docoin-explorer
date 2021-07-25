@@ -8,11 +8,37 @@ it('should render image and button', () => {
   expect(screen.getByRole('button', { name: 'Buy Docoin' })).toBeInTheDocument();
 });
 
-it('should display menu on button click', () => {
+it('should display and hide menu on button click', () => {
   render(<BuyMenu />);
   const button = screen.getByRole('button', { name: 'Buy Docoin' });
   userEvent.click(button);
   expect(screen.getByRole('menu')).toBeInTheDocument();
-  expect(screen.getByRole('textbox')).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Buy Docoin'})).toBeInTheDocument();
+  expect(screen.getByRole('spinbutton', { name: 'amount'})).toBeInTheDocument()
+  expect(screen.getByLabelText('Your Email')).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Continue' })).toBeInTheDocument();
+});
+
+it('should display typed text in input fields', () => {
+  render(<BuyMenu />);
+  const button = screen.getByRole('button', { name: 'Buy Docoin' });
+  userEvent.click(button);
+
+  const amountInput = screen.getByRole('spinbutton', { name: 'amount'});
+  userEvent.type(amountInput, '21')
+  expect(amountInput).toHaveValue(21)
+
+  const emailInput = screen.getByLabelText('Your Email');
+  userEvent.type(emailInput, 'test@user.com')
+  expect(emailInput).toHaveValue('test@user.com')
+});
+
+it('should not take alphabet characters in the amount field', () => {
+  render(<BuyMenu />);
+  const button = screen.getByRole('button', { name: 'Buy Docoin' });
+  userEvent.click(button);
+
+  const amountInput = screen.getByRole('spinbutton', { name: 'amount'});
+  userEvent.type(amountInput, 'a21')
+  expect(amountInput).toHaveValue(21)
 });
