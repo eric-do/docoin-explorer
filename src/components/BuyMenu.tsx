@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled, { keyframes } from 'styled-components';
+import BuyMenuContext from '../contexts/BuyMenuContext';
 
 interface ButtonProps {
   hovered: boolean;
@@ -43,8 +44,9 @@ const ButtonText = Styled.span`
 
 const BuyMenu = () => {
   const [hover, setHover] = React.useState<boolean>(false);
-  const [displayMenu, setDisplayMenu] = React.useState<boolean>(false);
-  const [formInputs, setFormInputs] = React.useState<FormInputs>({ amount: 0, email: '' })
+  const {displayMenu, setDisplayMenu} = React.useContext(BuyMenuContext);
+  const [formInputs, setFormInputs] = React.useState<FormInputs>({ amount: 0, email: '' });
+
 
   const handleInputs = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
@@ -89,7 +91,7 @@ const BuyMenu = () => {
           className="dropdown-menu"
           id="buy-drop-up"
           role="menu"
-          aria-label="Buy Docoin"
+          aria-label="Buy Docoin menu"
         >
           <div className="dropdown-content">
             <div className="dropdown-item">

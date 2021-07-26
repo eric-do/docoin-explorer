@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom'
 import NavBar from './NavBar';
+import userEvent from '@testing-library/user-event';
 
 const NavBarWithRouter = () => (
   <Router>
@@ -25,6 +26,14 @@ it('renders purchase CTA', () => {
   )).toBeInTheDocument();
 });
 
+it('renders trade CTA', () => {
+  render(<NavBarWithRouter />);
+  expect(screen.getByRole(
+    'button',
+    { name: 'Trade' }
+  )).toBeInTheDocument();
+});
+
 it('renders NavBar links', () => {
   render(<NavBarWithRouter />);
   expect(screen.getByRole(
@@ -40,3 +49,20 @@ it('renders NavBar links', () => {
     { name: 'Explorer' }
   )).toBeInTheDocument();
 });
+
+it('renders a search input field', () => {
+  render(<NavBarWithRouter />);
+  expect(screen.getByRole('textbox', { name: 'Search field' })).toBeInTheDocument()
+})
+
+it('renders text typed by the user in the input field', () => {
+  render(<NavBarWithRouter />);
+
+  const inputField = screen.getByRole(
+    'textbox',
+    { name: 'Search field' }
+  );
+
+  userEvent.type(inputField, 'test');
+  expect(inputField).toHaveValue('test');
+})
