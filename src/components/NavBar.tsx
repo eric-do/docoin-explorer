@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Styled from 'styled-components';
 import BuyMenuContext from '../contexts/BuyMenuContext';
+import { useTracking } from '../hooks';
 
 const NavSection = Styled.div`
   padding-top: 0;
@@ -16,10 +17,16 @@ const NavBar = () => {
   const [showMenu, setMenu] = React.useState<boolean>(false);
   const [searchInput, setSearchInput] = React.useState<string>('')
   const { displayMenu, setDisplayMenu } = React.useContext(BuyMenuContext);
+  const { clicks, incrementClicks } = useTracking('navbar-buy-docoin');
 
   const handleSearchInput = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearchInput(e.currentTarget.value);
   };
+
+  const handleButtonClick = () => {
+    setDisplayMenu(!displayMenu);
+    incrementClicks();
+  }
 
   return (
     <NavSection className="section">
@@ -77,7 +84,7 @@ const NavBar = () => {
           <div className="navbar-item">
             <div className="buttons">
               <button
-                onClick={() => setDisplayMenu(!displayMenu)}
+                onClick={handleButtonClick}
                 className="button is-primary"
               >
                 <strong>Buy Docoin</strong>

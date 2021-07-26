@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled, { keyframes } from 'styled-components';
 import BuyMenuContext from '../contexts/BuyMenuContext';
+import { useTracking } from '../hooks';
 
 interface ButtonProps {
   hovered: boolean;
@@ -46,7 +47,7 @@ const BuyMenu = () => {
   const [hover, setHover] = React.useState<boolean>(false);
   const {displayMenu, setDisplayMenu} = React.useContext(BuyMenuContext);
   const [formInputs, setFormInputs] = React.useState<FormInputs>({ amount: 0, email: '' });
-
+  const { clicks, incrementClicks } = useTracking('buy-docoin-button')
 
   const handleInputs = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
@@ -55,6 +56,11 @@ const BuyMenu = () => {
       [name]: value
     })
     )
+  }
+
+  const handleButtonClick = () => {
+    setDisplayMenu(!displayMenu);
+    incrementClicks();
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -71,7 +77,7 @@ const BuyMenu = () => {
             aria-controls="buy-drop-up"
             hovered={hover}
             displayMenu={displayMenu}
-            onClick={() => setDisplayMenu(!displayMenu)}
+            onClick={handleButtonClick}
             className="button is-rounded is-primary is-large buy-box"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
