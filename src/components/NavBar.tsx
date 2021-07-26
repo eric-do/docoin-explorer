@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Styled from 'styled-components';
+import BuyMenuContext from '../contexts/BuyMenuContext';
 
 const NavSection = Styled.div`
   padding-top: 0;
@@ -13,6 +14,12 @@ const StyledBrandLink = Styled.div`
 
 const NavBar = () => {
   const [showMenu, setMenu] = React.useState<boolean>(false);
+  const [searchInput, setSearchInput] = React.useState<string>('')
+  const { displayMenu, setDisplayMenu } = React.useContext(BuyMenuContext);
+
+  const handleSearchInput = (e: React.FormEvent<HTMLInputElement>): void => {
+    setSearchInput(e.currentTarget.value);
+  };
 
   return (
     <NavSection className="section">
@@ -62,13 +69,21 @@ const NavBar = () => {
                 className="input"
                 type="text"
                 placeholder="Search..."
+                value={searchInput}
+                onChange={handleSearchInput}
               />
             </div>
           </div>
           <div className="navbar-item">
             <div className="buttons">
-              <button className="button is-primary">
+              <button
+                onClick={() => setDisplayMenu(!displayMenu)}
+                className="button is-primary"
+              >
                 <strong>Buy Docoin</strong>
+              </button>
+              <button className="button has-background-info-dark has-text-white">
+                <strong>Trade</strong>
               </button>
             </div>
           </div>

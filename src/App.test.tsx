@@ -35,3 +35,10 @@ it('renders the Explorer section when user clicks Navbar link', () => {
     { name: 'Explorer page title'}
   )).toBeInTheDocument();
 })
+
+it('should display and hide menu on button click', () => {
+  render(<App />);
+  const navBarButton = screen.getAllByRole('button', { name: 'Buy Docoin'})[0];
+  userEvent.click(navBarButton);
+  expect(screen.getByLabelText('Buy Docoin menu')).toBeInTheDocument();
+});
