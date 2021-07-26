@@ -22,3 +22,8 @@ it('should display Get Started and Log In buttons', () => {
   expect(getStarted).toBeInTheDocument();
   expect(logIn).toBeInTheDocument();
 })
+
+it('should render Buy Docoin button', () => {
+  render(<Homepage />);
+  expect(screen.getByRole('button', { name: 'Buy Docoin' })).toBeInTheDocument();
+});

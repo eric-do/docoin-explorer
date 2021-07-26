@@ -15,10 +15,10 @@ const Homepage = () => {
       <StyledHero className="hero is-medium">
         <div className="hero-body has-text-left">
           <h1 className="title is-1 has-text-white" aria-label="Homepage title">
-            A popular way to buy, sell, and trade crypto
+            A better way to buy, sell, and trade crypto
           </h1>
           <h2 className="subtitle is-4 has-text-grey-lighter" aria-label="Homepage subtitle">
-            Trusted by some people since 2021 with over $8 Docoin in crypto transactions.
+            Trusted by some people since 2021 with over $8 in crypto transactions.
           </h2>
 
           <div className="level">
