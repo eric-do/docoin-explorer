@@ -47,7 +47,7 @@ const BuyMenu = () => {
   const [hover, setHover] = React.useState<boolean>(false);
   const {displayMenu, setDisplayMenu} = React.useContext(BuyMenuContext);
   const [formInputs, setFormInputs] = React.useState<FormInputs>({ amount: 0, email: '' });
-  const { clicks, incrementClicks } = useTracking('buy-docoin-button')
+  const { incrementClicks } = useTracking('buy-docoin-button')
 
   const handleInputs = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;

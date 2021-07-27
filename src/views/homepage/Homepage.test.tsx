@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Homepage from './Homepage';
 
-it('should display heading and description', () => {
+it('should render Hero section', () => {
   render(<Homepage />);
 
   const title = screen.getByRole('heading', { name: 'Homepage title' });
@@ -13,17 +13,14 @@ it('should display heading and description', () => {
   expect(description).toBeInTheDocument();
 })
 
-it('should display Get Started and Log In buttons', () => {
+it('displays wallet section', () => {
   render(<Homepage />);
-
-  const getStarted = screen.getByRole('button', { name: 'Get Started' });
-  const logIn = screen.getByRole('button', { name: 'Log In' });
-
-  expect(getStarted).toBeInTheDocument();
-  expect(logIn).toBeInTheDocument();
+  const title = screen.getByRole('heading', { name: 'Wallet section title' })
+  expect(title).toBeInTheDocument();
 })
 
 it('should render Buy Docoin button', () => {
   render(<Homepage />);
   expect(screen.getByRole('button', { name: 'Buy Docoin' })).toBeInTheDocument();
 });
+
