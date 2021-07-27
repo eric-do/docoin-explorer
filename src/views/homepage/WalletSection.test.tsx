@@ -27,3 +27,9 @@ it('clicking on a feature will display the description', () => {
   expect(screen.getByText(features[1].description)).toBeInTheDocument();
   expect(screen.queryByText(features[0].description)).toBeNull();
 })
+
+it('displays a Get Started button', () => {
+  render(<WalletSection features={features} />)
+
+  expect(screen.getByRole('button', { name: 'Get Started' })).toBeInTheDocument();
+})
