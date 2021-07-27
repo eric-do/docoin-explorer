@@ -2,6 +2,7 @@ import React from 'react';
 import Styled, { css } from 'styled-components';
 import mobilePhoneImage from './assets/wallet-control-funds@2x.png'
 import WalletFeature from './WalletFeature';
+import { device } from '../../utils/media';
 
 const StyledSection = Styled.div``
 
@@ -17,7 +18,11 @@ const Column = Styled.div`
 `;
 
 const LeftColumn = Styled(Column)`
-  padding: 70px 0 70px 140px;
+  padding: 5rem 0 5rem 9rem;
+
+  @media ${device.mobile} {
+    padding: 5rem 2rem;
+  }
 `;
 
 const RightColumn = Styled(Column)`
@@ -32,7 +37,11 @@ const Title = Styled.h2`
   ${BaseSectionFont}
 `
 
-const SectionImage = Styled.img``
+const SectionImage = Styled.img`
+  @media ${device.mobile} {
+    visibility: hidden;
+  }
+`
 
 const GetStartedButton = Styled.button`
   background-color: rgb(115, 73, 242);
@@ -78,11 +87,13 @@ const WalletSection = ({features}: WalletProps) => {
               </div>
             </div>
           </LeftColumn>
-          <RightColumn className="column">
-            <SectionImage
-              src={mobilePhoneImage}
-              aria-label="Wallet features image"
-            />
+          <RightColumn className="column is-justify-content-center is-flex-direction-column is-flex">
+            <figure className="image" >
+              <SectionImage
+                src={mobilePhoneImage}
+                aria-label="Wallet features image"
+              />
+            </figure>
           </RightColumn>
         </Columns>
       </StyledContainer>
