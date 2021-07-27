@@ -5,7 +5,6 @@ import NavBar from './components/NavBar'
 import ExplorerLanding from './views/explorer/ExplorerLanding';
 import Homepage from './views/homepage/Homepage';
 import BuyMenuContext from './contexts/BuyMenuContext';
-import BuyMenu from './components/BuyMenu';
 
 const App = () => {
   const [displayMenu, setDisplayMenu] = React.useState<boolean>(false);
