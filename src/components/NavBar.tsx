@@ -17,7 +17,7 @@ const NavBar = () => {
   const [showMenu, setMenu] = React.useState<boolean>(false);
   const [searchInput, setSearchInput] = React.useState<string>('')
   const { displayMenu, setDisplayMenu } = React.useContext(BuyMenuContext);
-  const { clicks, incrementClicks } = useTracking('navbar-buy-docoin');
+  const { incrementClicks } = useTracking('navbar-buy-docoin');
 
   const handleSearchInput = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearchInput(e.currentTarget.value);
