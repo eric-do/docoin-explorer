@@ -34,6 +34,11 @@ const Title = Styled.h2`
 
 const SectionImage = Styled.img``
 
+const GetStartedButton = Styled.button`
+  background-color: rgb(115, 73, 242);
+  border-radius: 0.75rem;
+  margin-top: 2rem;
+`;
 interface WalletProps {
   features: {
     title: string;
@@ -67,6 +72,11 @@ const WalletSection = ({features}: WalletProps) => {
                 />)
               )
             }
+            <div className="level">
+              <div className="level-left">
+                <GetStartedButton className="button has-text-white is-medium">Get Started</GetStartedButton>
+              </div>
+            </div>
           </LeftColumn>
           <RightColumn className="column">
             <SectionImage

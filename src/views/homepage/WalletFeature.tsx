@@ -1,14 +1,9 @@
 import React from 'react';
-import Styled, { css, keyframes } from 'styled-components';
+import Styled, { css } from 'styled-components';
 
 const BaseSectionFont = css`
   color: rgb(115, 73, 242);
   `;
-
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to   { opacity: 1; }
-`;
 
 const FeatureContainer = Styled.div`
   background-color: rgb(247, 245, 255);
@@ -16,9 +11,7 @@ const FeatureContainer = Styled.div`
   border: 0.0625rem solid rgb(222, 216, 253);
   margin-bottom: 0.75rem;
   padding: 1rem 6rem 1rem 1.25rem;
-  -webkit-transition: height 0.5s;
-  transition: height 0.5s;
-  animation: ${fadeIn} 0.75s;
+  cursor: pointer;
 `
 
 const FeatureTitle = Styled.h3`
