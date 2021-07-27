@@ -5,8 +5,12 @@ const BaseSectionFont = css`
   color: rgb(115, 73, 242);
   `;
 
-const FeatureContainer = Styled.div`
-  background-color: rgb(247, 245, 255);
+interface ContainerProps {
+  active: boolean;
+}
+
+const FeatureContainer = Styled.div<ContainerProps>`
+  background-color: ${p => p.active ?'rgb(239, 236, 254)': 'rgb(247, 245, 255)'};
   border-radius: 0.75rem;
   border: 0.0625rem solid rgb(222, 216, 253);
   margin-bottom: 0.75rem;
@@ -41,6 +45,7 @@ const WalletFeature = ({
     <FeatureContainer
       onClick={() => setActiveFeature(id)}
       className="has-text-left"
+      active={active}
     >
       <div className="block">
         <FeatureTitle className="title is-6">{title}</FeatureTitle>
