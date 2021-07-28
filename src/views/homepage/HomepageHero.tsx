@@ -25,9 +25,6 @@ const HomepageHero = () => {
               <p className="control">
                 <button className="button is-primary">Get Started</button>
               </p>
-              <p className="control">
-                <button className="button is-light">Log In</button>
-              </p>
             </div>
           </div>
         </div>

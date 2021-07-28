@@ -13,12 +13,10 @@ it('should display heading and description', () => {
   expect(description).toBeInTheDocument();
 })
 
-it('should display Get Started and Log In buttons', () => {
+it('should display Get Started button', () => {
   render(<HomepageHero />);
 
   const getStarted = screen.getByRole('button', { name: 'Get Started' });
-  const logIn = screen.getByRole('button', { name: 'Log In' });
 
   expect(getStarted).toBeInTheDocument();
-  expect(logIn).toBeInTheDocument();
 })
