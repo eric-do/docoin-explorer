@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import WalletSection from './WalletSection';
-import { features } from './dummy';
+import { features } from './data';
 
 it('displays wallet section title', () => {
   render(<WalletSection features={features}/>);
