@@ -1,16 +1,14 @@
 import React from 'react';
-import Styled, { css } from 'styled-components';
-
-const BaseSectionFont = css`
-  color: rgb(115, 73, 242);
-  `;
+import Styled from 'styled-components';
+import { IStyle } from './types';
 
 interface ContainerProps {
+  styles: IStyle;
   active: boolean;
 }
 
 const FeatureContainer = Styled.div<ContainerProps>`
-  background-color: ${p => p.active ?'rgb(239, 236, 254)': 'rgb(247, 245, 255)'};
+  background-color: ${p => p.active ? p.styles.activeColor: p.styles.backgroundColor};
   border-radius: 0.75rem;
   border: 0.0625rem solid rgb(222, 216, 253);
   margin-bottom: 0.75rem;
@@ -18,12 +16,12 @@ const FeatureContainer = Styled.div<ContainerProps>`
   cursor: pointer;
 `
 
-const FeatureTitle = Styled.h3`
-  ${BaseSectionFont}
+const FeatureTitle = Styled.h3<{ styles: IStyle }>`
+  color: ${p => p.styles.primaryColor}
 `
 
-const FeatureDescription = Styled.p`
-  ${BaseSectionFont}
+const FeatureDescription = Styled.p<{ styles: IStyle }>`
+  color: ${p => p.styles.primaryColor}
 `
 
 interface FeatureProps {
@@ -32,6 +30,7 @@ interface FeatureProps {
   description: string;
   active: boolean;
   setActiveFeature: (id: number) => void;
+  styles: IStyle;
 }
 
 const WalletFeature = ({
@@ -39,17 +38,26 @@ const WalletFeature = ({
   title,
   description,
   setActiveFeature,
-  active}: FeatureProps) => {
+  active,
+  styles
+}: FeatureProps) => {
 
   return (
     <FeatureContainer
       onClick={() => setActiveFeature(id)}
       className="has-text-left"
       active={active}
+      styles={styles}
     >
       <div className="block">
-        <FeatureTitle className="title is-6">{title}</FeatureTitle>
-        {active && <FeatureDescription className="subtitle is-6">{description}</FeatureDescription>}
+        <FeatureTitle styles={styles} className="title is-6">{title}</FeatureTitle>
+        {active &&
+          <FeatureDescription
+            styles={styles}
+            className="subtitle is-6"
+          >
+            {description}
+          </FeatureDescription>}
       </div>
     </FeatureContainer>
   )
