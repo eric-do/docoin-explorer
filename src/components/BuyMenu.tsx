@@ -18,6 +18,12 @@ const fadeIn = keyframes`
   to   { opacity: 1; }
 `;
 
+const ButtonContainer = Styled.div`
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+`
+
 const NakedInput = Styled.input`
   border: 0;
   outline: none;
@@ -68,7 +74,7 @@ const BuyMenu = () => {
   }
 
   return (
-    <div className="is-flex is-justify-content-flex-end section">
+    <ButtonContainer >
       <div className={`dropdown is-right is-up ${displayMenu && 'is-active'}`}>
         <div className="dropdown-trigger">
           <BuyButton
@@ -141,7 +147,7 @@ const BuyMenu = () => {
           </div>
         </DropUpMenu>
       </div>
-    </div>
+    </ButtonContainer>
   )
 };
 
