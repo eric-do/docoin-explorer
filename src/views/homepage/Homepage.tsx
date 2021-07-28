@@ -1,15 +1,13 @@
 import React from 'react';
-import BuyMenu from '../../components/BuyMenu';
 import HomepageHero from './HomepageHero';
 import WalletSection from './WalletSection';
-import { features } from './dummy';
+import { features } from './data';
 
 const Homepage = () => {
   return (
     <div>
       <HomepageHero />
       <WalletSection features={features}/>
-      <BuyMenu />
     </div>
   );
 };

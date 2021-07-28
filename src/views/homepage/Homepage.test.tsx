@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import Homepage from './Homepage';
 
 it('should render Hero section', () => {
@@ -18,9 +17,4 @@ it('displays wallet section', () => {
   const title = screen.getByRole('heading', { name: 'Wallet section title' })
   expect(title).toBeInTheDocument();
 })
-
-it('should render Buy Docoin button', () => {
-  render(<Homepage />);
-  expect(screen.getByRole('button', { name: 'Buy Docoin' })).toBeInTheDocument();
-});
 
