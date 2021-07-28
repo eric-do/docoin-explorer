@@ -1,7 +1,7 @@
 import React from 'react';
 import HomepageHero from './HomepageHero';
 import FeatureSection from './FeatureSection';
-import { walletFeatures } from './data';
+import { walletFeatures, exchangeFeatures } from './data';
 
 const walletContent = {
   label: 'Wallet',
@@ -16,6 +16,19 @@ const walletStyles = {
   activeColor: 'rgb(239, 236, 254)'
 }
 
+const exchangeContent = {
+  label: 'Exchange',
+  title: 'Lightning-Fast Crypto Trading',
+  features: exchangeFeatures,
+  button: 'Trade now'
+}
+
+const exchangeStyles = {
+  primaryColor: 'rgb(12, 108, 242)',
+  backgroundColor: 'rgb(245, 250, 254)',
+  activeColor: 'rgb(236, 245, 254)'
+}
+
 const Homepage = () => {
   return (
     <div>
@@ -23,6 +36,10 @@ const Homepage = () => {
       <FeatureSection
         content={walletContent}
         styles={walletStyles}
+      />
+      <FeatureSection
+        content={exchangeContent}
+        styles={exchangeStyles}
       />
     </div>
   );

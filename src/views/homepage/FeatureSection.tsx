@@ -7,8 +7,8 @@ import { IFeaturesContent, IStyle } from './types';
 
 const StyledSection = Styled.div``
 
-const StyledContainer = Styled.div`
-  background-color: rgba(239, 236, 254, 0.5);
+const StyledContainer = Styled.div<{ styles: IStyle}>`
+  background-color: ${p => p.styles.backgroundColor};
   border-radius: 10px;
 `
 
@@ -22,7 +22,7 @@ interface WalletProps {
 const FeatureSection = ({content, styles}: WalletProps) => {
   return (
     <StyledSection className="section">
-      <StyledContainer className="container">
+      <StyledContainer styles={styles} className="container">
         <Columns className="columns">
           <FeatureColumn
             content={content}

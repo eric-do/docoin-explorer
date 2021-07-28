@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled  from 'styled-components';
-import WalletFeature from './WalletFeature';
+import Feature from './Feature';
 import { device } from '../../utils/media';
 import { IFeature } from './types';
 
@@ -50,12 +50,13 @@ const FeatureColumn = ({ content: {title, features, button }, styles}: ColumnPro
       </Title>
       {
         features.map((feature, i) => (
-          <WalletFeature
+          <Feature
             {...feature}
             active={i === activeFeature}
             id={i}
             setActiveFeature={setActiveFeature}
             key={i}
+            styles={styles}
           />)
         )
       }
