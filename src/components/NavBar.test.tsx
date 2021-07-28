@@ -1,14 +1,33 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom'
+import '@testing-library/jest-dom/extend-expect'
 import NavBar from './NavBar';
 import userEvent from '@testing-library/user-event';
+import { User } from 'netlify-identity-widget';
+import { authContext, AuthContext } from '../contexts/AuthContext';
 
 const NavBarWithRouter = () => (
   <Router>
     <NavBar/>
   </Router>
 )
+
+const defaultAuth = {
+  isAuthenticated: false,
+  user: null,
+  signin: (cb: (user: User | null) => void) => {},
+  signout: (cb: () => void) => {},
+};
+
+const customRender = (
+  ui: JSX.Element,
+  {providerProps}: {providerProps: React.ProviderProps<AuthContext>}
+) => {
+  return render(
+    <authContext.Provider {...providerProps}>{ui}</authContext.Provider>
+  )
+}
 
 it('renders app title', () => {
   render(<NavBarWithRouter />);
@@ -26,11 +45,11 @@ it('renders purchase CTA', () => {
   )).toBeInTheDocument();
 });
 
-it('renders trade CTA', () => {
+it('renders Login CTA by default', () => {
   render(<NavBarWithRouter />);
   expect(screen.getByRole(
     'button',
-    { name: 'Trade' }
+    { name: 'Log In' }
   )).toBeInTheDocument();
 });
 
@@ -65,4 +84,17 @@ it('renders text typed by the user in the input field', () => {
 
   userEvent.type(inputField, 'test');
   expect(inputField).toHaveValue('test');
+})
+
+it('should not display Log In button if user is authenticated', () => {
+  const providerProps = {
+    value: {
+      ...defaultAuth,
+      isAuthenticated: true
+    }
+  };
+
+  customRender(<NavBarWithRouter />, { providerProps });
+
+  expect(screen.queryByRole('button', { name: 'Log In' })).toBeNull();
 })

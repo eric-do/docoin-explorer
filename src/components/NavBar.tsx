@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Styled from 'styled-components';
 import BuyMenuContext from '../contexts/BuyMenuContext';
 import { useTracking } from '../hooks';
+import { authContext } from '../contexts/AuthContext';
+import LoginButton from './LoginButton';
 
 const NavSection = Styled.div`
   padding-top: 0;
@@ -17,6 +19,7 @@ const NavBar = () => {
   const [showMenu, setMenu] = React.useState<boolean>(false);
   const [searchInput, setSearchInput] = React.useState<string>('')
   const { displayMenu, setDisplayMenu } = React.useContext(BuyMenuContext);
+  const { isAuthenticated } = React.useContext(authContext);
   const { incrementClicks } = useTracking('navbar-buy-docoin');
 
   const handleSearchInput = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -89,9 +92,7 @@ const NavBar = () => {
               >
                 <strong>Buy Docoin</strong>
               </button>
-              <button className="button has-background-info-dark has-text-white">
-                <strong>Trade</strong>
-              </button>
+              { !isAuthenticated && <LoginButton /> }
             </div>
           </div>
         </div>
