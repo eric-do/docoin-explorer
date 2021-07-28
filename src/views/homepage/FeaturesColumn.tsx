@@ -2,7 +2,7 @@ import React from 'react';
 import Styled  from 'styled-components';
 import Feature from './Feature';
 import { device } from '../../utils/media';
-import { IFeature } from './types';
+import { IFeature, IStyle } from './types';
 
 const LeftColumn = Styled.div`
   padding: 5rem 0 5rem 9rem;
@@ -29,11 +29,7 @@ interface ColumnProps {
     features: IFeature[];
     button: string;
   };
-  styles: {
-    primaryColor: string;
-    backgroundColor: string;
-    activeColor: string;
-  };
+  styles: IStyle;
 }
 
 const FeatureColumn = ({ content: {title, features, button }, styles}: ColumnProps) => {

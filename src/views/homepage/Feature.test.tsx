@@ -6,7 +6,8 @@ import Feature from './Feature';
 const styles = {
   primaryColor: 'rgb(12, 108, 242)',
   backgroundColor: 'rgb(245, 250, 254)',
-  activeColor: 'rgb(236, 245, 254)'
+  activeColor: 'rgb(236, 245, 254)',
+  borderColor: 'rgb(222, 216, 253)'
 }
 
 it('should display title and description of feature if active', () => {

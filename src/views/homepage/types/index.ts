@@ -15,4 +15,5 @@ export interface IStyle {
   primaryColor: string;
   backgroundColor: string;
   activeColor: string;
+  borderColor: string;
 }
