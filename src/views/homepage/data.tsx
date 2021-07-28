@@ -1,4 +1,4 @@
-export const features = [
+export const walletFeatures = [
   {
     title: 'Buy and Sell Crypto in Minutes',
     description: 'Instantly buy Bitcoin with credit card, debit card, or by linking your bank.',
