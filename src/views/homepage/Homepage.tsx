@@ -13,7 +13,8 @@ const walletContent = {
 const walletStyles = {
   primaryColor: 'rgb(115, 73, 242)',
   backgroundColor: 'rgb(247, 245, 255)',
-  activeColor: 'rgb(239, 236, 254)'
+  activeColor: 'rgb(239, 236, 254)',
+  borderColor: 'rgb(222, 216, 253)'
 }
 
 const exchangeContent = {
@@ -26,7 +27,8 @@ const exchangeContent = {
 const exchangeStyles = {
   primaryColor: 'rgb(12, 108, 242)',
   backgroundColor: 'rgb(245, 250, 254)',
-  activeColor: 'rgb(236, 245, 254)'
+  activeColor: 'rgb(236, 245, 254)',
+  borderColor: 'rgb(216, 235, 253)'
 }
 
 const Homepage = () => {

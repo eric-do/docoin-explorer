@@ -10,7 +10,7 @@ interface ContainerProps {
 const FeatureContainer = Styled.div<ContainerProps>`
   background-color: ${p => p.active ? p.styles.activeColor: p.styles.backgroundColor};
   border-radius: 0.75rem;
-  border: 0.0625rem solid rgb(222, 216, 253);
+  border: 0.0625rem solid ${p => p.styles.borderColor};
   margin-bottom: 0.75rem;
   padding: 1rem 6rem 1rem 1.25rem;
   cursor: pointer;

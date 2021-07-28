@@ -14,7 +14,8 @@ const sectionContent = {
 const sectionStyles = {
   primaryColor: 'rgb(115, 73, 242)',
   backgroundColor: 'rgb(247, 245, 255)',
-  activeColor: 'rgb(239, 236, 254)'
+  activeColor: 'rgb(239, 236, 254)',
+  borderColor: 'rgb(222, 216, 253)'
 }
 
 it('displays section title', () => {
