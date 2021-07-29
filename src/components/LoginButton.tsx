@@ -1,16 +1,12 @@
 import React from 'react'
 import { authContext } from '../contexts/AuthContext';
-import { Redirect } from 'react-router';
 
 const LoginButton = () => {
-  const [redirectToExplorer, setRedirect] = React.useState<boolean>(false);
   const { signin } = React.useContext(authContext);
 
   const login = () => {
-    signin(() => setRedirect(true));
+    signin(() => {});
   };
-
-  if (redirectToExplorer) return <Redirect to={{pathname: '/explorer'}}/>
 
   return (
     <button

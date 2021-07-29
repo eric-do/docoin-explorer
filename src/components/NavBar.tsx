@@ -5,6 +5,7 @@ import BuyMenuContext from '../contexts/BuyMenuContext';
 import { useTracking } from '../hooks';
 import { authContext } from '../contexts/AuthContext';
 import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 const NavSection = Styled.div`
   padding-top: 0;
@@ -19,8 +20,8 @@ const NavBar = () => {
   const [showMenu, setMenu] = React.useState<boolean>(false);
   const [searchInput, setSearchInput] = React.useState<string>('')
   const { displayMenu, setDisplayMenu } = React.useContext(BuyMenuContext);
-  const { isAuthenticated } = React.useContext(authContext);
   const { incrementClicks } = useTracking('navbar-buy-docoin');
+  const { isAuthenticated } = React.useContext(authContext);
 
   const handleSearchInput = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearchInput(e.currentTarget.value);
@@ -92,7 +93,7 @@ const NavBar = () => {
               >
                 <strong>Buy Docoin</strong>
               </button>
-              { !isAuthenticated && <LoginButton /> }
+              { isAuthenticated ? <LogoutButton /> : <LoginButton />  }
             </div>
           </div>
         </div>
