@@ -86,7 +86,7 @@ it('renders text typed by the user in the input field', () => {
   expect(inputField).toHaveValue('test');
 })
 
-it('should not display Log In button if user is authenticated', () => {
+it('should display Log Out button if user is authenticated', () => {
   const providerProps = {
     value: {
       ...defaultAuth,
@@ -97,4 +97,19 @@ it('should not display Log In button if user is authenticated', () => {
   customRender(<NavBarWithRouter />, { providerProps });
 
   expect(screen.queryByRole('button', { name: 'Log In' })).toBeNull();
+  expect(screen.getByRole('button', { name: 'Log Out' })).toBeInTheDocument();
+})
+
+it('should display Log In button if user is not authenticated', () => {
+  const providerProps = {
+    value: {
+      ...defaultAuth,
+      isAuthenticated: false
+    }
+  };
+
+  customRender(<NavBarWithRouter />, { providerProps });
+
+  expect(screen.queryByRole('button', { name: 'Log Out' })).toBeNull();
+  expect(screen.getByRole('button', { name: 'Log In' })).toBeInTheDocument();
 })
