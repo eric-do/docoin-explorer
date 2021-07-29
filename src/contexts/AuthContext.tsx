@@ -43,13 +43,11 @@ const defaultAuth = {
 export const authContext = createContext<AuthContext>(defaultAuth);
 
 export const useProvideAuth = () => {
-  const [user, setUser] = React.useState<User | null>(null);
-  const [isAuthenticated, setAuthenticated] = React.useState<boolean>(false);
-
+  const [user, setUser] = React.useState<User | null>(netlifyIdentity.currentUser());
+  const isAuthenticated  = !!netlifyIdentity.currentUser;
   const signin = (cb: (user: User | null) => void) => {
     return netlifyAuth.signin(user => {
       setUser(user);
-      setAuthenticated(true)
       cb(user);
     })
   }
@@ -57,7 +55,6 @@ export const useProvideAuth = () => {
   const signout = (cb: () => void) => {
     return netlifyAuth.signout(() => {
       setUser(null);
-      setAuthenticated(false)
       cb();
     })
   }
