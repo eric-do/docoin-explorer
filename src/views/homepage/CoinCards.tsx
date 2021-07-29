@@ -1,6 +1,7 @@
 import React from 'react';
-import { IHistoricalCrypto } from '../../types';
 import styled from 'styled-components';
+import { IHistoricalCrypto } from '../../types';
+import { dollarFormatter } from '../../utils';
 
 const CardsContainer = styled.div`
   border-radius: 0.5rem;
@@ -13,6 +14,9 @@ const Level = styled.div``;
 const LevelItem = styled.div`
   width: 240px;
 `;
+const Percentage = styled.div<{ isPositive: boolean}>`
+  color: ${p => p.isPositive ? 'rgb(0, 178, 107)' : 'rgb(255, 68, 58)'}
+`
 
 interface IProps {
   currencies: IHistoricalCrypto[]
@@ -28,6 +32,14 @@ const CoinCards = ({ currencies }: IProps) => {
             <CardContent className="card-content">
               <Content className="content">
                 <Level className="level">
+                  <div className="level-left">
+                  </div>
+                  <div className="level-right">
+                    <button className="button is-small level-item is-light is-link">Buy</button>
+                    <button className="button is-small level-item is-light is-primary">Trade</button>
+                  </div>
+                </Level>
+                <Level className="level">
                   <div className="level-left has-text-left">
                     <div className="level-item">
                       { currency.name }
@@ -40,11 +52,14 @@ const CoinCards = ({ currencies }: IProps) => {
                 <Level className="level">
                   <div className="level-left">
                     <div className="level-item">
-                      { currency.quote["USD"].price.toFixed(2)}
+                      { dollarFormatter(currency.quote["USD"].price) }
                     </div>
-                    <div className="level-item">
-                      { `${currency.quote["USD"].percent_change_24h.toFixed(2)}%`}
-                    </div>
+                    <Percentage
+                      isPositive={currency.quote["USD"].percent_change_1h >= 0}
+                      className="level-item"
+                    >
+                      { `${currency.quote["USD"].percent_change_1h.toFixed(2)}%`}
+                    </Percentage>
                   </div>
                 </Level>
               </Content>

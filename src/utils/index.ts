@@ -69,3 +69,8 @@ export const getTransactionTableData = (transactions: Transaction[], exchange: n
     }
   })
 };
+
+export const dollarFormatter = (price: number) => new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+}).format(price);
