@@ -11,7 +11,7 @@ export interface AuthContext {
 const netlifyAuth: AuthContext = {
   isAuthenticated: false,
   user: null,
-  signin(callback: (user: User) => void) {
+  signin(callback: (user: User) => void = () => {}) {
     this.isAuthenticated = true;
     netlifyIdentity.open();
     netlifyIdentity.on('login', user => {
@@ -19,7 +19,7 @@ const netlifyAuth: AuthContext = {
       callback(user);
     });
   },
-  signout(callback: () => void) {
+  signout(callback: () => void = () => {}) {
     this.isAuthenticated = false;
     netlifyIdentity.logout();
     netlifyIdentity.on('logout', () => {
@@ -44,7 +44,7 @@ export const authContext = createContext<AuthContext>(defaultAuth);
 
 export const useProvideAuth = () => {
   const [user, setUser] = React.useState<User | null>(netlifyIdentity.currentUser());
-  const isAuthenticated  = !!netlifyIdentity.currentUser;
+  const isAuthenticated  = !!user;
   const signin = (cb: (user: User | null) => void) => {
     return netlifyAuth.signin(user => {
       setUser(user);
