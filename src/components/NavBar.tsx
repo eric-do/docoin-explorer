@@ -5,6 +5,7 @@ import BuyMenuContext from '../contexts/BuyMenuContext';
 import { useTracking } from '../hooks';
 import { authContext } from '../contexts/AuthContext';
 import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 const NavSection = Styled.div`
   padding-top: 0;
@@ -92,7 +93,7 @@ const NavBar = () => {
               >
                 <strong>Buy Docoin</strong>
               </button>
-              { !isAuthenticated && <LoginButton />  }
+              { isAuthenticated ? <LogoutButton /> : <LoginButton />  }
             </div>
           </div>
         </div>
