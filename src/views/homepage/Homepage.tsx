@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useQuery } from 'react-query';
 import HomepageHero from './HomepageHero';
 import FeatureSection from './FeatureSection';
 import { walletFeatures, exchangeFeatures } from './data';
+import { getLatestMarketInfo } from '../../api/coinmarketcap';
+import { IHistoricalCrypto } from '../../types';
 
 const walletContent = {
   label: 'Wallet',
@@ -32,6 +35,12 @@ const exchangeStyles = {
 }
 
 const Homepage = () => {
+  const { isLoading, error, data } = useQuery('currencies', getLatestMarketInfo);
+  const [currencies, setCurrencies] = useState<IHistoricalCrypto[]>([])
+
+  if (error) console.log(error);
+  if (data) console.log(data.data);
+
   return (
     <div>
       <HomepageHero />
