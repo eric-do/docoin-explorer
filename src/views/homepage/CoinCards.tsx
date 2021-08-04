@@ -36,7 +36,7 @@ const CoinCards = ({ currencies }: IProps) => {
       <CardsContainer className="level is-justify-content-space-evenly is-mobile">
         {
           currencies.map(currency => (
-            <Card className="card">
+            <Card className="card" key={currency.id}>
               <CardContent className="card-content ">
                 <Content className="content">
                   <Level className="level">
