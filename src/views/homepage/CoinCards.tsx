@@ -5,6 +5,8 @@ import { dollarFormatter } from '../../utils';
 
 const CardsSection = styled.div`
   margin-top: -130px;
+  display: flex;
+  justify-content: center;
 `
 
 const CardsContainer = styled.div`
@@ -12,7 +14,10 @@ const CardsContainer = styled.div`
   padding: 0;
   top: -150px;
 `
-const Card = styled.div``
+const Card = styled.div`
+  margin: 0 15px;
+  width: 231px;
+`
 const CardContent = styled.div``
 const Content = styled.div``
 const Level = styled.div``;
@@ -38,28 +43,28 @@ const CoinCards = ({ currencies }: IProps) => {
                     <div className="level-left">
                     </div>
                     <div className="level-right">
-                      <button className="button is-small level-item is-light is-link">Buy</button>
-                      <button className="button is-small level-item is-light is-primary">Trade</button>
+                      <button className="button is-small level-item is-light is-link has-text-weight-bold">Buy</button>
+                      <button className="button is-small level-item is-light is-primary has-text-weight-bold">Trade</button>
                     </div>
                   </Level>
                   <Level className="level">
-                    <div className="level-left has-text-left">
+                    <div className="level-left has-text-left has-text-weight-bold">
                       <div className="level-item">
                         { currency.name }
                       </div>
-                      <div className="level-item">
+                      <div className="level-item has-text-grey">
                       { currency.symbol }
                       </div>
                     </div>
                   </Level>
                   <Level className="level">
                     <div className="level-left">
-                      <div className="level-item">
+                      <div className="level-item has-text-weight-bold">
                         { dollarFormatter(currency.quote["USD"].price) }
                       </div>
                       <Percentage
                         isPositive={currency.quote["USD"].percent_change_1h >= 0}
-                        className="level-item"
+                        className="level-item has-text-weight-bold"
                       >
                         { `${currency.quote["USD"].percent_change_1h.toFixed(2)}%`}
                       </Percentage>
