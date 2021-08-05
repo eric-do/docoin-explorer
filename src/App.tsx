@@ -1,7 +1,10 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query'
 import './App.css';
 import BuyMenuContext from './contexts/BuyMenuContext';
 import Routers from './Routers';
+
+const queryClient = new QueryClient()
 
 const App = () => {
   const [displayMenu, setDisplayMenu] = React.useState<boolean>(false);
@@ -9,9 +12,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <BuyMenuContext.Provider value={value}>
-        <Routers />
-      </BuyMenuContext.Provider>
+      <QueryClientProvider client={queryClient}>
+        <BuyMenuContext.Provider value={value}>
+          <Routers />
+        </BuyMenuContext.Provider>
+      </QueryClientProvider>
     </div>
   );
 }

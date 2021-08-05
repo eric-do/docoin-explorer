@@ -1,7 +1,15 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 import HomepageHero from './HomepageHero';
 import FeatureSection from './FeatureSection';
 import { walletFeatures, exchangeFeatures } from './data';
+import { getLatestMarketInfo } from '../../api/coinmarketcap';
+import CoinCards from './CoinCards';
+import styled from 'styled-components';
+
+const HomepageContainer = styled.div`
+  position: relative;
+`
 
 const walletContent = {
   label: 'Wallet',
@@ -32,9 +40,12 @@ const exchangeStyles = {
 }
 
 const Homepage = () => {
+  const { data: marketData } = useQuery('currencies', getLatestMarketInfo);
+
   return (
-    <div>
+    <HomepageContainer>
       <HomepageHero />
+      { marketData && <CoinCards currencies={marketData.data} />}
       <FeatureSection
         content={walletContent}
         styles={walletStyles}
@@ -43,7 +54,7 @@ const Homepage = () => {
         content={exchangeContent}
         styles={exchangeStyles}
       />
-    </div>
+    </HomepageContainer>
   );
 };
 
